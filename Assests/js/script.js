@@ -1,25 +1,24 @@
 // seltect the timer element
-var timeEl = document.querySelector(".countdown");
-var startButton = document.querySelector(".start-button");
-
-function startQuiz() {
-    timerCount = 75;
-    startTimer();
-}
+var timeEl = document.querySelector("#countdown");
+var startButton = document.querySelector("#start-button");
 
 function startTimer() {
-    // var timerCount = 75;
-    timer = setInterval(function() {
-    timerCount--;
-    timeEl.textContent = timerCount;
+    let timer = 75;
+    setInterval(function () {
+        timer--;
+        if (timer >= 0) {
+            span = document.getElementById('countdown');
+            span.innerHTML = timer;
+        }
 
-
-
-    if (timerCount === 0) {
-        clearInterval(timer);
-    }
-
-    }, 7500)
+        if (timer === 0) {
+            alert("out of time");
+            clearInterval(timer);
+        }
+    }, 1000)
 }
 
-startButton.onclick = startTimer;
+function start() {
+    document.getElementById('start-button').style = "color:purple";
+    startTimer();
+}
